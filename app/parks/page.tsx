@@ -9,7 +9,7 @@ export default function ParksPage() {
   useEffect(() => {
     async function loadParks() {
       try {
-        const res = await fetch("http://localhost:3001/api/parks");
+        const res = await fetch("http://127.0.0.1:3001/api/parks");
         const data = await res.json();
         setParks(data);
       } catch (error) {
@@ -21,7 +21,17 @@ export default function ParksPage() {
 
     loadParks();
   }, []);
-
+async function deletePark(id: string){
+  const res = await fetch(`http://127.0.0.1:3001/api/parks/${id}`,{
+    method: "DELETE",
+  });
+  if (res.ok){
+    alert("Park deleted");
+    location.reload();
+  } else{
+    alert("Error deleting park");
+  }
+}
   return (
     <div className="p-6">
       <h1 className="text-xl font-bold mb-4">Parks List</h1>
@@ -34,6 +44,12 @@ export default function ParksPage() {
             <h2 className="font-semibold">{park.name}</h2>
             <p>{park.city}</p>
             <p>Playground: {park.hasPlayground ? "Yes" : "No"}</p>
+
+            <button
+            onClick={() => deletePark(park._id)}
+            className="bg-red-500 text-white px-2 py-1 mt-2">
+              Delete
+            </button>
           </div>
         ))
       )}
