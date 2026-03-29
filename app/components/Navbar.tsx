@@ -5,7 +5,7 @@ export default function Navbar() {
         <nav className="bg-blue-600 text-white p-4 flex gap-4">
             <Link href="/">Home</Link>
             <Link href="/parks">List Parks</Link>
-            <Link href="/parks/add">Add Park</Link>
+            <Link href="/add-park">Add Park</Link>
         </nav>
     );
 }
