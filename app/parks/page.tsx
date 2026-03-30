@@ -1,5 +1,6 @@
 "use client";
-
+import React from "react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ParksPage() {
@@ -44,6 +45,11 @@ async function deletePark(id: string){
             <h2 className="font-semibold">{park.name}</h2>
             <p>{park.city}</p>
             <p>Playground: {park.hasPlayground ? "Yes" : "No"}</p>
+            <Link
+            href={`/parks/${park._id}`} 
+            className="bg-yellow-500 text-black px-2 py-1 mt-2 inline-block mr-2">
+              Edit
+            </Link>
 
             <button
             onClick={() => deletePark(park._id)}
