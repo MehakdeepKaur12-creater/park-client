@@ -15,7 +15,7 @@ export default function ParksPage() {
   useEffect(() => {
     async function loadParks() {
       try {
-        const res = await fetch("http://127.0.0.1:3001/api/parks");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/parks`);
         const data = await res.json();
         setParks(data);
       } catch (error) {
@@ -28,7 +28,7 @@ export default function ParksPage() {
     loadParks();
   }, []);
 async function deletePark(id: string){
-  const res = await fetch(`http://127.0.0.1:3001/api/parks/${id}`,{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/parks/${id}`,{
     method: "DELETE",
   });
   if (res.ok){
@@ -58,7 +58,7 @@ async function addReview(parkId: string, e: FormEvent) {
   e.preventDefault();
   const review = reviewData[parkId];
 
-  const res = await fetch(`http://127.0.0.1:3001/api/parks/${parkId}/reviews`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/parks/${parkId}/reviews`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

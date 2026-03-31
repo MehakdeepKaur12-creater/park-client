@@ -16,7 +16,7 @@ export default function EditParkPage() {
     useEffect(() => {
         async function loadPark() {
             try {
-                const res = await fetch(`http://127.0.0.1:3001/api/parks/${id}`);
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/parks/${id}`);
                 const data = await res.json();
                 setName(data.name);
                 setCity(data.city);
@@ -35,7 +35,7 @@ export default function EditParkPage() {
     async function handleSubmit(e: FormEvent) {
         e.preventDefault();
 
-        const res = await fetch(`http://127.0.0.1:3001/api/parks/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/parks/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
