@@ -28,5 +28,3 @@ NEXT_PUBLIC_API_URL= http://127.0.0.1:3001
 
 ## Owner
 Mehakdeep Kaur
-200618520
-Mar 30, 2026
